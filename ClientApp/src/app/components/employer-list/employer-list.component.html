@@ -1,0 +1,34 @@
+<p>
+  <a class="btn btn-primary" [routerLink]="['/employer/new']">Add Employer</a>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Employer ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Joining Date</th>
+      <th>Is Active</th>
+      <th>Branch</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of employers">
+      <td>{{e.employerID}}</td>
+      <td>{{e.name}}</td>
+      <td>{{e.email}}</td>
+      <td>{{e.address}}</td>
+      <td>{{e.joiningDate|date:shortDate}}</td>
+      <td>{{e.isActive}}</td>
+      <td>{{e.branchID}}</td>
+      <td>
+        <a class="btn btn-primary" [routerLink]="['/employer/', e.employerID]">Edit</a>
+        <button class="btn btn-danger" (click)="delete(e.employerID)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

@@ -1,0 +1,21 @@
+<h2>Branch Information </h2>
+<hr />
+<p>
+  <a [routerLink]="['/branch']" class="btn btn-primary">Back to List</a>
+</p>
+<form #f="ngForm" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="branchName">Branch Name</label>
+    <input type="text" id="branchName" class="form-control" [(ngModel)]="branch.branchName" name="branchName" required branchName="ngModel" />
+    <!--<div class="alert alert-danger" *ngIf="branchName.touched && !eventName.valid">Please Enter Branch Name</div>-->
+  </div>
+
+  <div class="form-group">
+    <label for="branchDivision">Division</label>
+    <input type="text" id="branchDivision" class="form-control" [(ngModel)]="branch.branchDivision" name="branchDivision" required #branchDivision="ngModel" />
+    <!--<div class="alert alert-danger" *ngIf="branchDivision.touched && !eventType.valid">Please Enter Branch Division</div>-->
+  </div>
+
+  <input type="submit" class="btn btn-primary" [disabled]="!f.valid" value="Add" *ngIf="!branch.branchID" />
+  <input type="submit" class="btn btn-info" value="Update" *ngIf="branch.branchID" />
+</form>

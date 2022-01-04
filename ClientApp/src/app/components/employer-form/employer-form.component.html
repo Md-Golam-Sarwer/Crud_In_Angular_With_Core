@@ -1,0 +1,50 @@
+<h2>Employee Information </h2>
+<hr />
+<p>
+  <a [routerLink]="['/employer']" class="btn btn-primary">Back to List</a>
+</p>
+<form #f="ngForm" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" class="form-control" [(ngModel)]="employer.name" name="name" required #name="ngModel" />
+    <div class="alert alert-danger" *ngIf="name.touched && !name.valid">Please Enter Name</div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" id="email" class="form-control" [(ngModel)]="employer.email" name="email" required #email="ngModel" />
+    <div class="alert alert-danger" *ngIf="email.touched && !name.valid">Please Enter Email</div>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input type="text" id="address" class="form-control" [(ngModel)]="employer.address" name="address" required #address="ngModel" />
+    <div class="alert alert-danger" *ngIf="address.touched && !address.valid">Please Enter Address</div>
+  </div>
+
+  <div class="form-group">
+    <label for="joiningDateDate">Joining Date</label>
+    <input type="date" id="joiningDateDate" class="form-control" [(ngModel)]="employer.joiningDateDate" name="joiningDateDate" required #eventDate="ngModel" />
+    <!--<div class="alert alert-danger" *ngIf="cellPhone.touched && !cellPhone.valid">Please Enter Cell Phone</div>-->
+  </div>
+
+  <div class="form-group">
+    <label for="isActive">IsActive</label>
+    <input type="checkbox" id="isActive" class="form-control" [(ngModel)]="employer.isActive" name="isActive" required #isAvailable="ngModel" />
+    <!--<div class="alert alert-danger" *ngIf="cellPhone.touched && !cellPhone.valid">Please Enter Cell Phone</div>-->
+  </div>
+
+  <div class="form-group">
+    <label for="branchName">Branch</label>
+    <div class="col-md-4">
+      <select class="form-control" id="branchID" [(ngModel)]="employer.branchID" name="branchID" required #courseID="ngModel">
+        <option [ngValue]="0">--Select Branch--</option>
+        <option *ngFor="let brc of branchList" [ngValue]="brc.branchID">{{brc.branchName}}</option>
+      </select>
+    </div>
+  </div>
+
+  <input type="submit" class="btn btn-primary" [disabled]="!f.valid" value="Add" *ngIf="!employer.employerID" />
+  <input type="submit" class="btn btn-info" value="Update" *ngIf="employer.employerID" />
+</form>
+

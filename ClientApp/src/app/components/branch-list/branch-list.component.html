@@ -1,0 +1,25 @@
+<p>
+  <a class="btn btn-primary" [routerLink]="['/branch/new']">Add branch</a>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Branch ID</th>
+      <th>Branch Name</th>
+      <th>Division</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let b of branches">
+      <td>{{b.branchID}}</td>
+      <td>{{b.branchName}}</td>
+      <td>{{b.branchDivision}}</td>
+      <td>
+        <a class="btn btn-primary" [routerLink]="['/branch/', b.branchID]">Edit</a>
+        <button class="btn btn-danger" (click)="delete(b.branchID)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
